@@ -1549,6 +1549,7 @@ local sell = "sell2"
 local walkspeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
 local jumppower = game.Players.LocalPlayer.Character.Humanoid.JumpPower
 local Rebirth = 1
+local waittime = .05
  
 a:CreateToggle("Auto Coin", function(v)
     AutoCoin = v
@@ -1558,10 +1559,14 @@ a:CreateToggle("Auto Sell", function(v)
     AutoSell = v
 end)
 
-a:CreateDropdown("Auto Sell Area", {"Spawn", "2x Coin"}, 2, function(v)
+a:CreateTextbox("Wait Time", function(v)
+    waittime = v 
+end)
+
+a:CreateDropdown("Auto Sell Area", {"Spawn", "Rebirth"}, 2, function(v)
     if v == "Spawn" then
         sell = "sell1"
-    elseif v == "2x Coin" then
+    elseif v == "Rebirth" then
         sell = "sell2"
     end
 end)
@@ -1571,7 +1576,41 @@ a:CreateToggle("Auto Rebirth", function(v)
 end)
 
 a:CreateDropdown("Rebirth Amount", {"1", "5", "25", "50", "100", "250", "500", "1000", "2500", "5000", "10000", "25000", "50000", "75000", "100000", "125000", "200000"}, 2, function(v)
-    Rebirth = tonumber(v)
+    if v == "1" then
+        Rebirth = 1
+    elseif v == "5" then
+        Rebirth = 5
+    elseif v == "25" then
+        Rebirth = 25
+    elseif v == "50" then
+        Rebirth = 50
+    elseif v == "100" then
+        Rebirth = 100
+    elseif v == "250" then
+        Rebirth = 250
+    elseif v == "500" then
+        Rebirth = 500
+    elseif v == "1000" then
+        Rebirth = 1000
+    elseif v == "2500" then
+        Rebirth = 2500
+    elseif v == "5000" then
+        Rebirth = 5000
+    elseif v == "10000" then
+        Rebirth = 10000
+    elseif v == "25000" then
+        Rebirth = 25000
+    elseif v == "50000" then
+        Rebirth = 50000
+    elseif v == "75000" then
+        Rebirth = 75000
+    elseif v == "100000" then
+        Rebirth = 100000
+    elseif v == "125000" then
+        Rebirth = 125000
+    elseif v == "200000" then
+        Rebirth = 200000
+    end
 end)
 
 b:CreateToggle("Active", function(v)
@@ -1609,10 +1648,10 @@ spawn(function()
         if AutoSell then
             if sell == "sell2" then
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-419.514709, 5.21380043, -849.897949) + Vector3.new(1,1,0)
-                wait(.05)
+                wait(waittime)
             elseif sell == "sell1" then
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(133.744507, 14.6463766, -52.6264954) + Vector3.new(1,1,0)
-                wait(.05)
+                wait(waittime)
             end
         end
     end
