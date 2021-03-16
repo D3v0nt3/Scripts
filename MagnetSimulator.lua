@@ -1572,7 +1572,7 @@ end)
 
 a:CreateDropdown("Auto Sell Area", {
 	"Spawn",
-	"2x Coin"
+	"Rebirth"
 }, 2, function(v)
 	if v == "Spawn" then
 		sell = "sell1"
